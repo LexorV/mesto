@@ -1,0 +1,11 @@
+.place__picture {
+    margin: 0;
+    padding: 0;
+    height: 282px;
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    object-fit: cover;
+}
+.place__picture:hover {
+    cursor: pointer;
+}

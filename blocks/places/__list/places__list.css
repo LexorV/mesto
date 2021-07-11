@@ -1,0 +1,23 @@
+.places__list {
+    margin: 0;
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+    /*grid-template-rows: repeat(2, 1fr);*/
+    gap: 17px;
+}
+
+@media screen and (min-width:1500px) {
+    .places__list {
+        grid-template-columns: repeat(3, minmax(282px, 1fr))
+    }
+}
+
+
+/*@media screen and (max-width:920px) {
+    .places__list {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+}*/
