@@ -46,36 +46,35 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-function ChengeBigPlace(data, elementPicture, elementText){
+function chengeBigPlace(data, elementPicture, elementText){
   elementPicture.setAttribute('src', data.link);
   elementPicture.setAttribute('alt', data.name);
   elementText.textContent = data.name;
-  return elementPicture, elementText
 }
-function OpenPopap(form) {
+function OpenPopup(form) {
 form.classList.add('popup_opened');
 };
-function ClosePopap(form) {
+function ClosePopup(form) {
   form.classList.remove('popup_opened');
 }
 function SaveNamePersonal() {
   ProfileName.textContent = newNameProfile.value;
   ProfileDescription.textContent = newBusyProfile.value;
-  ClosePopap(popupEditProfile);
+  ClosePopup(popupEditProfile);
 };
 /** Event handler **/
 profileButtonEdit.addEventListener('click', function () {
-  OpenPopap(popupEditProfile);
+  OpenPopup(popupEditProfile);
 });
 buttonCloseProfile.addEventListener('click' , function(){
-  ClosePopap(popupEditProfile);
+  ClosePopup(popupEditProfile);
 });
 popupButtonAdd.addEventListener('click' , function(){
-  OpenPopap(popupNewPlace);
+  OpenPopup(popupNewPlace);
   console.log(popupBigPlace);
 })
 buttonClosePlace.addEventListener('click' , function(){
-  ClosePopap(popupNewPlace);
+  ClosePopup(popupNewPlace);
 });
 
 popupButtonSave.addEventListener('click', function(){
@@ -95,7 +94,7 @@ PlaceButtonSave.addEventListener('click', function(){
     initialCards.unshift(NewCardsArray);
   addPlace(initialCards[i], placesList);
   i++;
-  ClosePopap(popupNewPlace);
+  ClosePopup(popupNewPlace);
   break
   }
 }});
@@ -117,9 +116,9 @@ function reaturePlaces(data) {
     buttonHeart.classList.toggle('place__button-heart_active');
   });
   PlacePicture.addEventListener('click' , function() {
-    ChengeBigPlace(data, BigPicturePlace, BigPlacetext);
+    chengeBigPlace(data, BigPicturePlace, BigPlacetext);
     console.log(popupBigPlace);
-    OpenPopap(popupBigPlace);
+    OpenPopup(popupBigPlace);
   });
   return NewPlace;
 };
@@ -133,6 +132,6 @@ for (i=0; i<=5; i++) {
 }
 console.log(CloseBigPicture);
 CloseBigPicture.addEventListener('click', function(){
-  ClosePopap(popupBigPlace);
+  ClosePopup(popupBigPlace);
   //ClosePopap(popupBigPlace);
 });
