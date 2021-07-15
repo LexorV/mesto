@@ -84,20 +84,14 @@ popupButtonSave.addEventListener('click', function(){
 PlaceButtonSave.addEventListener('click', function(){
   const NewNamePlace = document.querySelector('#newNamePlace').value;
   const newPicturePlace = document.querySelector('#newPicturePlace').value;
-  if (NewNamePlace !== '' & newPicturePlace !== '') {
-  while (i<999) {
-    i = 0;
+  
     const NewCardsArray =  {
       name: NewNamePlace,
       link: newPicturePlace
     };
-    initialCards.unshift(NewCardsArray);
-  addPlace(initialCards[i], placesList);
-  i++;
+  addPlace(NewCardsArray, placesList);
   ClosePopup(popupNewPlace);
-  break
-  }
-}});
+});
 function reaturePlaces(data) {
   const placesMain  = document.querySelector('#Newplaces').content;
   const NewPlace = placesMain.querySelector('.place').cloneNode(true);
@@ -126,7 +120,6 @@ function addPlace(data, container) {
 const place = reaturePlaces(data);
 container.prepend(place);
 };
-
 for (i=0; i<=5; i++) {
   addPlace(initialCards[i], placesList);
 }
