@@ -118,9 +118,12 @@ function addPlace(data, container) {
 const place = reaturePlaces(data);
 container.prepend(place);
 };
-for (i=0; i<=5; i++) {
-  addPlace(initialCards[i], placesList);
-}
+initialCards.forEach(element => {
+  addPlace(initialCards, placesList);
+  return element
+});
+  
+
 closeBigPicture.addEventListener('click', function(){
   closePopup(popupBigPlace);
   //ClosePopap(popupBigPlace);
