@@ -4,8 +4,8 @@ const profileButtonEdit = document.querySelector('.profile__edit-button');
 const popupButtonSave = document.querySelector('#ProfileButtonSave');
 const buttonCloseProfile = document.querySelector('#buttonCloseProfile');
 const popupButtonAdd = document.querySelector('.profile__button-add');
-const PlaceButtonSave = document.querySelector('#PlaceButtonSave');
-const CloseBigPicture =document.querySelector('#CloseBigPicture');
+const placeButtonSave = document.querySelector('#PlaceButtonSave');
+const closeBigPicture =document.querySelector('#CloseBigPicture');
 /** container **/
 const popupNewPlace = document.querySelector('#popupEditPlace');
 const popupEditProfile = document.querySelector('#popupEditProfile');
@@ -14,12 +14,11 @@ const popupBigPlace = document.querySelector('#popupBigPlace');
 const newNameProfile = document.querySelector('#newNameProfile');
 const newBusyProfile = document.querySelector('#newBusyProfile');
 /**text **/
-const BigPlaceList = document.querySelector('.popup__list')
 const placesList = document.querySelector('.places__list');
-const ProfileName = document.querySelector('#ProfileName');
-const ProfileDescription = document.querySelector('#ProfileDescription');
-const BigPicturePlace = document.querySelector('#BigPicturePlace');
-const BigPlacetext = document.querySelector('#BigPictureName');
+const profileName = document.querySelector('#ProfileName');
+const profileDescription = document.querySelector('#ProfileDescription');
+const bigPicturePlace = document.querySelector('#BigPicturePlace');
+const bigPlacetext = document.querySelector('#BigPictureName');
 const initialCards = [
   {
     name: 'Архыз',
@@ -51,37 +50,37 @@ function chengeBigPlace(data, elementPicture, elementText){
   elementPicture.setAttribute('alt', data.name);
   elementText.textContent = data.name;
 }
-function OpenPopup(form) {
+function openPopup(form) {
 form.classList.add('popup_opened');
 };
-function ClosePopup(form) {
+function closePopup(form) {
   form.classList.remove('popup_opened');
 }
-function SaveNamePersonal() {
-  ProfileName.textContent = newNameProfile.value;
-  ProfileDescription.textContent = newBusyProfile.value;
-  ClosePopup(popupEditProfile);
+function saveNamePersonal() {
+  profileName.textContent = newNameProfile.value;
+  profileDescription.textContent = newBusyProfile.value;
+  closePopup(popupEditProfile);
 };
 /** Event handler **/
 profileButtonEdit.addEventListener('click', function () {
-  OpenPopup(popupEditProfile);
+  openPopup(popupEditProfile);
 });
 buttonCloseProfile.addEventListener('click' , function(){
-  ClosePopup(popupEditProfile);
+  closePopup(popupEditProfile);
 });
 popupButtonAdd.addEventListener('click' , function(){
-  OpenPopup(popupNewPlace);
+  openPopup(popupNewPlace);
   console.log(popupBigPlace);
 })
 buttonClosePlace.addEventListener('click' , function(){
-  ClosePopup(popupNewPlace);
+  closePopup(popupNewPlace);
 });
 
 popupButtonSave.addEventListener('click', function(){
-  SaveNamePersonal();
+  saveNamePersonal();
 });
 
-PlaceButtonSave.addEventListener('click', function(){
+placeButtonSave.addEventListener('click', function(){
   const NewNamePlace = document.querySelector('#newNamePlace').value;
   const newPicturePlace = document.querySelector('#newPicturePlace').value;
   
@@ -90,31 +89,30 @@ PlaceButtonSave.addEventListener('click', function(){
       link: newPicturePlace
     };
   addPlace(NewCardsArray, placesList);
-  ClosePopup(popupNewPlace);
+  closePopup(popupNewPlace);
 });
 function reaturePlaces(data) {
   const placesMain  = document.querySelector('#Newplaces').content;
-  const NewPlace = placesMain.querySelector('.place').cloneNode(true);
-  const PlacePicture = NewPlace.querySelector('.place__picture');
-  const removeButton = NewPlace.querySelector('.place__remove');
-  const placeName = NewPlace.querySelector('.place__name');
-  const buttonHeart = NewPlace.querySelector('.place__button-heart');
-  PlacePicture.setAttribute('src', data.link);
-  PlacePicture.setAttribute('alt', data.name);
+  const newPlace = placesMain.querySelector('.place').cloneNode(true);
+  const placePicture = newPlace.querySelector('.place__picture');
+  const removeButton = newPlace.querySelector('.place__remove');
+  const placeName = newPlace.querySelector('.place__name');
+  const buttonHeart = newPlace.querySelector('.place__button-heart');
+  placePicture.setAttribute('src', data.link);
+  placePicture.setAttribute('alt', data.name);
   placeName.textContent = data.name;
   removeButton.addEventListener('click', function(){
     console.log('test');
-    NewPlace.remove();
+    newPlace.remove();
   });
   buttonHeart.addEventListener('click' , function() {
     buttonHeart.classList.toggle('place__button-heart_active');
   });
-  PlacePicture.addEventListener('click' , function() {
-    chengeBigPlace(data, BigPicturePlace, BigPlacetext);
-    console.log(popupBigPlace);
-    OpenPopup(popupBigPlace);
+  placePicture.addEventListener('click' , function() {
+    chengeBigPlace(data, bigPicturePlace, bigPlacetext);
+    openPopup(popupBigPlace);
   });
-  return NewPlace;
+  return newPlace;
 };
 function addPlace(data, container) {
 const place = reaturePlaces(data);
@@ -123,8 +121,7 @@ container.prepend(place);
 for (i=0; i<=5; i++) {
   addPlace(initialCards[i], placesList);
 }
-console.log(CloseBigPicture);
-CloseBigPicture.addEventListener('click', function(){
-  ClosePopup(popupBigPlace);
+closeBigPicture.addEventListener('click', function(){
+  closePopup(popupBigPlace);
   //ClosePopap(popupBigPlace);
 });
