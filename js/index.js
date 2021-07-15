@@ -1,11 +1,11 @@
 /**Button **/
 const profileButtonAdd = document.querySelector('.profile__button-add');
 const profileButtonEdit = document.querySelector('.profile__edit-button');
-const popupButtonSave = document.querySelector('#ProfileButtonSave');
+const popupButtonSave = document.querySelector('#profileButtonSave');
 const buttonCloseProfile = document.querySelector('#buttonCloseProfile');
 const popupButtonAdd = document.querySelector('.profile__button-add');
-const placeButtonSave = document.querySelector('#PlaceButtonSave');
-const closeBigPicture =document.querySelector('#CloseBigPicture');
+const placeButtonSave = document.querySelector('#placeButtonSave');
+const closeBigPicture =document.querySelector('#closeBigPicture');
 /** container **/
 const popupNewPlace = document.querySelector('#popupEditPlace');
 const popupEditProfile = document.querySelector('#popupEditProfile');
@@ -15,10 +15,10 @@ const newNameProfile = document.querySelector('#newNameProfile');
 const newBusyProfile = document.querySelector('#newBusyProfile');
 /**text **/
 const placesList = document.querySelector('.places__list');
-const profileName = document.querySelector('#ProfileName');
-const profileDescription = document.querySelector('#ProfileDescription');
-const bigPicturePlace = document.querySelector('#BigPicturePlace');
-const bigPlacetext = document.querySelector('#BigPictureName');
+const profileName = document.querySelector('#profileName');
+const profileDescription = document.querySelector('#profileDescription');
+const bigPicturePlace = document.querySelector('#bigPicturePlace');
+const bigPlacetext = document.querySelector('#bigPictureName');
 const initialCards = [
   {
     name: 'Архыз',
@@ -92,7 +92,7 @@ placeButtonSave.addEventListener('click', function(){
   closePopup(popupNewPlace);
 });
 function reaturePlaces(data) {
-  const placesMain  = document.querySelector('#Newplaces').content;
+  const placesMain  = document.querySelector('#newplaces').content;
   const newPlace = placesMain.querySelector('.place').cloneNode(true);
   const placePicture = newPlace.querySelector('.place__picture');
   const removeButton = newPlace.querySelector('.place__remove');
