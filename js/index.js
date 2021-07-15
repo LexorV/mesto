@@ -83,7 +83,6 @@ popupButtonSave.addEventListener('click', function(){
 placeButtonSave.addEventListener('click', function(){
   const NewNamePlace = document.querySelector('#newNamePlace').value;
   const newPicturePlace = document.querySelector('#newPicturePlace').value;
-  
     const NewCardsArray =  {
       name: NewNamePlace,
       link: newPicturePlace
@@ -119,7 +118,7 @@ const place = reaturePlaces(data);
 container.prepend(place);
 };
 initialCards.forEach(element => {
-  addPlace(initialCards, placesList);
+ element =  addPlace(element, placesList);
   return element
 });
   
