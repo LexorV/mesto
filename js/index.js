@@ -10,6 +10,8 @@ const closeBigPicture =document.querySelector('#closeBigPicture');
 const popupNewPlace = document.querySelector('#popupEditPlace');
 const popupEditProfile = document.querySelector('#popupEditProfile');
 const popupBigPlace = document.querySelector('#popupBigPlace');
+const editPlaceForm = document.querySelector('#editPlaceForm');
+const editProfileForm = document.querySelector('#editProfileForm');
 /**input**/
 const newNameProfile = document.querySelector('#newNameProfile');
 const newBusyProfile = document.querySelector('#newBusyProfile');
@@ -70,24 +72,25 @@ buttonCloseProfile.addEventListener('click' , function(){
 });
 popupButtonAdd.addEventListener('click' , function(){
   openPopup(popupNewPlace);
-  console.log(popupBigPlace);
 })
 buttonClosePlace.addEventListener('click' , function(){
   closePopup(popupNewPlace);
 });
 
-popupButtonSave.addEventListener('click', function(){
+editProfileForm.addEventListener('submit', function(event){
+  event.preventDefault();
   saveNamePersonal();
 });
 
-placeButtonSave.addEventListener('click', function(){
-  const NewNamePlace = document.querySelector('#newNamePlace').value;
+editPlaceForm.addEventListener('submit', function(event) {
+  event.preventDefault();
+  const newNamePlace = document.querySelector('#newNamePlace').value;
   const newPicturePlace = document.querySelector('#newPicturePlace').value;
-    const NewCardsArray =  {
-      name: NewNamePlace,
+    const newCardsArray =  {
+      name: newNamePlace,
       link: newPicturePlace
     };
-  addPlace(NewCardsArray, placesList);
+  addPlace(newCardsArray, placesList);
   closePopup(popupNewPlace);
 });
 function reaturePlaces(data) {
@@ -101,7 +104,6 @@ function reaturePlaces(data) {
   placePicture.setAttribute('alt', data.name);
   placeName.textContent = data.name;
   removeButton.addEventListener('click', function(){
-    console.log('test');
     newPlace.remove();
   });
   buttonHeart.addEventListener('click' , function() {
@@ -118,10 +120,9 @@ const place = reaturePlaces(data);
 container.prepend(place);
 };
 initialCards.forEach(element => {
- element =  addPlace(element, placesList);
+element =  addPlace(element, placesList);
   return element
 });
-  
 
 closeBigPicture.addEventListener('click', function(){
   closePopup(popupBigPlace);
