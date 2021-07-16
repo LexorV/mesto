@@ -58,6 +58,11 @@ form.classList.add('popup_opened');
 function closePopup(form) {
   form.classList.remove('popup_opened');
 }
+function initinalProfile(){
+  newNameProfile.value = profileName.textContent;
+  newBusyProfile.value = profileDescription.textContent;
+}
+initinalProfile();
 function saveNamePersonal() {
   profileName.textContent = newNameProfile.value;
   profileDescription.textContent = newBusyProfile.value;
